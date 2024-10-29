@@ -1,8 +1,9 @@
 # Assignment 5
+<img src="https://github.com/Gabe-o/Marching-Cubes/blob/main/Screenshot1.png" width="500">
+<img src="https://github.com/Gabe-o/Marching-Cubes/blob/main/Screenshot2.png" width="500">
+
 ## Info
-Name: Gabriel Olivotto    
-Email: golivott@uwo.ca  
-Student #: 251150929
+Rendering 3d functions using marching cubes
 
 ## Submission
 ### Exercise1.cpp
@@ -21,7 +22,7 @@ The executable takes up to 8 args:
         b. 2 = x^2-y^2-z^2-z
         c. 3 = x^2+y^2+z^2
     8. bonus            (default = 1)
-        a. 1 = bonus enabled: rending during marching algorithm
+        a. 1 = bonus enabled: render as marching algorithm is running 
         b. 0 = bonus disabled: precompute entire mesh then render
 
 To render y-sin(x)cos(z) with isovalue of 0:
