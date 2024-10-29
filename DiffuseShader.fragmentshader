@@ -1,0 +1,32 @@
+// Fragment
+#version 400
+
+in vec3 Normal_cameraspace;
+in vec3 EyeDirection_cameraspace;
+in vec3 LightDirection_cameraspace;
+
+out vec4 color;
+
+uniform vec4 modelColor;
+
+void main(){
+    vec4 LightColor = vec4(1,1,1,1);
+
+    // Material properties
+    vec4 DiffuseColor = modelColor;
+    vec4 AmbientColor = vec4(0.2,0.2,0.2,modelColor.a) * DiffuseColor;
+    vec4 SpecularColor = vec4(1, 1, 1,modelColor.a);
+
+    vec3 n = normalize( Normal_cameraspace );
+    vec3 l = normalize( LightDirection_cameraspace );
+    float cosTheta = clamp( dot( n,l ), 0,1 );
+
+    vec3 E = normalize(EyeDirection_cameraspace);
+    vec3 R = reflect(-l,n);
+    float cosAlpha = clamp( dot( E,R ), 0,1 );
+
+    color =
+        AmbientColor +
+        DiffuseColor * LightColor * cosTheta +
+        SpecularColor * LightColor * pow(cosAlpha, 64);  
+}
